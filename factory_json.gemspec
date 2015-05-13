@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = FactoryJson::VERSION
   spec.authors       = ["E-Max"]
   spec.email         = ["max.zab87@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{FactoryGirl's extension for JSON support.}
+  spec.description   = %q{FactoryGirl can now handle JSON representation for an object.}
+  spec.homepage      = "https://github.com/local-ch/factory_json"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
