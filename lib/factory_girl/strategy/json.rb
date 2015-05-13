@@ -6,12 +6,16 @@ module FactoryGirl
       end
 
       def result(evaluation)
-        build_class = evaluation.instance_variable_get(:@attribute_assigner).instance_variable_get(:@build_class)
-        
         source = 
-          build_class == Hash ? evaluation.hash : evaluation.object
+          build_class_is_hash?(evaluation) ? evaluation.hash : evaluation.object
 
         source.to_json
+      end
+
+      private
+
+      def build_class_is_hash?(evaluation)
+        evaluation.instance_variable_get(:@attribute_assigner).instance_variable_get(:@build_class) == Hash
       end
     end
   end
