@@ -1,7 +1,7 @@
 # FactoryJson
 
-Hi! Main purpose of this gem is to provide a simple way to manipulate JSON data structures using power of
-FactoryGirl gem.
+Hi! The main purpose of this gem is to provide a simple way to create JSON data structures using the power of
+FactoryGirl's DSL.
 
 ## Installation
 
@@ -19,11 +19,11 @@ Or install it yourself as:
 
 ## Usage
 
-This extension provides two cases. A hash that is being used as a class facory build class or any other build class
+This extension provides two new ways of working with FactoryGirl
 
 #### Dealing with Hashes
 
-This is quite simple case. All you need to do is to specify a Hash as a build class while registering factory and thet is pretty much it
+Tired of creating json fixtures somewhere in your app and keeping them up to date alongside with your factories? Now you can create your JSON fixtures with factories: All you need to do is specify a Hash as the build class while registering the factory ... and that is pretty much it!
 
 ```ruby
 # spec/factories/data_structures.rb
@@ -41,17 +41,17 @@ FactoryGirl.define do
 end
 ```
 
-Now you can use this factory inside your tests
+And this might be a way to use these in our specs
 
 ```ruby
 entry_relation = FactoryGirl.as_json(:entry_relation, :with_address) # to return data as a Ruby hash, that beeing piped through JSON parse
 entry_relation = FactoryGirl.json(:entry_relation, :with_address) # to return string, that contains valid JSON
-``` 
+```
 
 #### Dealing with Models
-  
-This is a bit more complicated example, but still it is simple. Suppose there is an existing factory for an active record.
-All you need to do is to define to_json or to_hash (since to_json is based on to_hash) methods on the model.
+
+
+You have a factory that you'd also like to use as a JSON fixture? Use common usage patterns (to_json) with our fixtures now! Not only can you get JSON from your factories, but of course also Hashes. All you need to do is to define to_json or to_hash (since to_json is based on to_hash) on your model.
 
 ```ruby
 # spec/factories/users.rb
@@ -67,8 +67,8 @@ FactoryGirl.define do
 end
 
 # app/models/user.rb
-class User < ActiveRecord::Base
-  
+class User
+
   def to_json
     {
       name: self.name,
@@ -79,14 +79,13 @@ class User < ActiveRecord::Base
 end
 ```
 
-Now you can use this factory inside your tests
 
 ```ruby
 user = FactoryGirl.build(:user, :with_profile) # to return new User object
 user = FactoryGirl.create(:user, :with_profile) # to return persistent User object
 user_hash = FactoryGirl.as_json(:user, :with_profile) # to return data as a Ruby hash, that beeing piped through JSON parse
 user_json = FactoryGirl.json(:user, :with_profile) # to return string, that contains valid JSON
-``` 
+```
 
 ## Contributing
 
