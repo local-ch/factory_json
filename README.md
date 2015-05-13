@@ -69,12 +69,12 @@ end
 # app/models/user.rb
 class User < ActiveRecord::Base
   
-  def to_hash
+  def to_json
     {
       name: self.name,
       email: self.email,
       profile: profile.to_hash
-    }
+    }.to_json
   end
 end
 ```
