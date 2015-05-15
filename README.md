@@ -28,7 +28,16 @@ Tired of creating json fixtures somewhere in your app and keeping them up to dat
 ```ruby
 # spec/factories/data_structures.rb
 FactoryGirl.define do
-  factory :entry_relation, class: 'Hash' do
+  factory :entry, class: Hash do
+    name "This one is special"
+    location "The place where you can always see a Sunrise"
+
+    after(:build) do |entry|
+      entry[:relations] = FactoryGirl.build_list(entry_relation, 3, :with_address)
+    end
+  end
+
+  factory :entry_relation, class: Hash do
     type "RELATED"
     label "Apartment:"
     name_summary "Mr Darth Vader"
@@ -54,9 +63,45 @@ entry_relation = FactoryGirl.json(:entry_relation, :with_address) # to return st
 You have a factory that you'd also like to use as a JSON fixture? Use common usage patterns (to_json) with our fixtures now! Not only can you get JSON from your factories, but of course also Hashes. All you need to do is to define to_json or to_hash (since to_json is based on to_hash) on your model.
 
 ```ruby
-# spec/factories/users.rb
+# app/models.rb
+class User
+
+  has_one :profile
+
+  def to_hash
+    {
+      name: self.name,
+      email: self.email,
+      profile: profile.to_hash
+    }.to_json
+  end
+
+  def to_json(*args)
+    to_hash.to_json(*args)
+  end
+end
+
+class Profile
+
+  belongs_to :user
+
+  def to_hash
+    {
+      age: self.age,
+      hair_color: self.hair_color,
+      child_dream: self.child_dream,
+      i_will_start_running: "tomorrow"
+    }
+  end
+
+  def to_json(*args)
+    to_hash.to_json(*args)
+  end
+end
+
+# spec/factories.rb
 FactoryGirl.define do
-  factory :user, class: 'User' do
+  factory :user do
     name "User 1"
     email "test@example.com"
 
@@ -64,17 +109,11 @@ FactoryGirl.define do
       association :profile
     end
   end
-end
 
-# app/models/user.rb
-class User
-
-  def to_json
-    {
-      name: self.name,
-      email: self.email,
-      profile: profile.to_hash
-    }.to_json
+  factory :profile do
+    age "18 years"
+    hair_color "blue"
+    child_dream "To become a Jedi Knight"
   end
 end
 ```
