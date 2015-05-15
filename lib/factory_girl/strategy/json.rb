@@ -1,21 +1,20 @@
 module FactoryGirl
   module Strategy
     class JSON
+      def initialize
+        @strategy = FactoryGirl.strategy_by_name(:build).new
+      end
+      
       def association(runner)
-        runner.run(:null)
+        runner.instance_variable_set :@strategy, :build
+        runner.run
       end
 
       def result(evaluation)
-        source = 
-          build_class_is_hash?(evaluation) ? evaluation.hash : evaluation.object
+        result = @strategy.result(evaluation)
+        evaluation.notify(:before_json, result)
 
-        source.to_json
-      end
-
-      private
-
-      def build_class_is_hash?(evaluation)
-        evaluation.instance_variable_get(:@attribute_assigner).instance_variable_get(:@build_class) == Hash
+        result.to_json
       end
     end
   end

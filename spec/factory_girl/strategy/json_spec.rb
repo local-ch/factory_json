@@ -1,17 +1,14 @@
-
 require 'spec_helper'
 
 describe FactoryGirl::Strategy::JSON do
-  it_should_behave_like "strategy without association support"
+  it_should_behave_like "strategy with association support", :build
+  it_should_behave_like "strategy with callbacks", "{}", :after_build, :before_json
+  it_should_behave_like "strategy with strategy: :build", :build
 
   context "Object source" do
     let(:result)     { { "name" => "John Doe", "gender" => "Male", "admin" => false }.to_json }
     let(:object)     { stub("user", to_json: result) }
-    let(:evaluation) { stub("evaluation", object: object) }
-
-    before(:each) do
-      subject.stubs(:build_class_is_hash?).returns(false)
-    end
+    let(:evaluation) { stub("evaluation", object: object, notify: true) }
 
     it "returns to_hash from the evaluation for an object" do
       expect(subject.result(evaluation)).to eq(result)
@@ -27,11 +24,7 @@ describe FactoryGirl::Strategy::JSON do
   context "Hash source" do
     let(:result)     { { "name" => "John Doe", "gender" => "Male", "admin" => false }.to_json }
     let(:hash)       { { name: "John Doe", gender: "Male", admin: false } }
-    let(:evaluation) { stub("evaluation", hash: hash) }
-
-    before(:each) do
-      subject.stubs(:build_class_is_hash?).returns(true)
-    end
+    let(:evaluation) { stub("evaluation", object: hash, notify: true) }
 
     it "returns the hash from the evaluation" do
       expect(subject.result(evaluation)).to eq result
