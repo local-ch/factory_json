@@ -8,5 +8,6 @@ gem 'jdbc-sqlite3', platforms: :jruby
 
 gem 'sqlite3', '~> 1.3.10', platforms: :ruby
 
-gem "pry"
-gem "pry-byebug"
+# gem "pry"
+# gem "pry-byebug"
+# gem "pry-stack_explorer"

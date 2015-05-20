@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe FactoryGirl::Strategy::JSON do
   it_should_behave_like "strategy with association support", :build
-  it_should_behave_like "strategy with callbacks", "{}", :after_build, :before_json
+  it_should_behave_like "json strategy with callbacks", "{}", :after_build, :before_json
   it_should_behave_like "strategy with strategy: :build", :build
 
   context "Object source" do

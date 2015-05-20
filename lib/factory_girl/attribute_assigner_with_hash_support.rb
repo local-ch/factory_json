@@ -7,7 +7,7 @@ module FactoryGirl
         attributes_to_set_on_instance.each do |attribute|
           if instance.respond_to?("#{attribute}=")
             instance.public_send("#{attribute}=", get(attribute))
-          elsif instance.respond_to?("[]=")
+          elsif instance.kind_of?(Hash)
             instance[attribute] = get(attribute)
           else
             raise NoMethodError.new("undefined method `#{attribute}=' for #{instance}")

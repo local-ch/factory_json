@@ -126,6 +126,20 @@ user_hash = FactoryGirl.as_json(:user, :with_profile) # to return data as a Ruby
 user_json = FactoryGirl.json(:user, :with_profile) # to return string, that contains valid JSON
 ```
 
+## Testing
+
+Testing is pretty much standard
+
+```bash
+rspec spec
+```
+
+Testing compatibility with FactoryGirl
+
+```bash
+rspec `bundle show factory_girl`/spec
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/factory_json/fork )
