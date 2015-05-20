@@ -33,4 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "timecop"
   spec.add_development_dependency "activerecord", ">= 3.0.0"
 
+  # Compatibility test
+  spec.add_development_dependency "factory_girl_rails"
+
 end
