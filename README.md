@@ -73,7 +73,7 @@ class User
       name: self.name,
       email: self.email,
       profile: profile.to_hash
-    }.to_json
+    }
   end
 
   def to_json(*args)
