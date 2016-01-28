@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.required_ruby_version = '~> 2.0'
-  
+
   spec.add_dependency "factory_girl"
 
   spec.add_development_dependency "rake"
@@ -35,5 +35,5 @@ Gem::Specification.new do |spec|
 
   # Compatibility test
   spec.add_development_dependency "factory_girl_rails"
-
+  spec.add_development_dependency "ciderizer"
 end
