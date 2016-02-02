@@ -7,7 +7,7 @@ describe FactoryGirl::Strategy::AsJSON do
 
   context "Object source" do
     let(:result)     { { "name" => "John Doe", "gender" => "Male", "admin" => false } }
-    let(:object)     { stub("user", to_json: result.to_json, ) }
+    let(:object)     { stub("user", to_json: result.to_json) }
     let(:evaluation) { stub("evaluation", object: object, notify: true) }
 
     it "pipes hash through JSON lib" do

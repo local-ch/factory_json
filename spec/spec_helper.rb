@@ -23,7 +23,6 @@ Dir[files].each { |f| require File.expand_path(f) }
 require "support/shared_examples/strategy"
 
 RSpec.configure do |config|
-
   config.mock_framework = :mocha
   config.include DeclarationMatchers
 
