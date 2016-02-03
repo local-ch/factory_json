@@ -4,7 +4,7 @@ module FactoryGirl
       def initialize
         @strategy = FactoryGirl.strategy_by_name(:build).new
       end
-      
+
       def association(runner)
         runner.instance_variable_set :@strategy, :build
         runner.run

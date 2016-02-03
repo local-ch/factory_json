@@ -59,7 +59,7 @@ shared_examples_for "strategy with strategy: :build" do |factory_girl_strategy_n
 
   it "runs the factory with the correct overrides" do
     association_named(:author, strategy: :build, great: "value")
-    expect(factory).to have_received(:run).with(factory_girl_strategy_name, { great: "value" })
+    expect(factory).to have_received(:run).with(factory_girl_strategy_name, great: "value")
   end
 
   it "finds the factory with the correct factory name" do
@@ -90,7 +90,7 @@ shared_examples_for "strategy with callbacks" do |*callback_names|
 end
 
 shared_examples_for "json strategy with callbacks" do |result_instance, *callback_names|
-  let(:object) {{}}
+  let(:object) { {} }
   let(:evaluation) { stub("evaluation", object: object, notify: true, create: nil) }
 
   it "runs the callbacks #{callback_names} with the evaluation's object" do
