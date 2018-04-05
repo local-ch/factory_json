@@ -24,7 +24,6 @@ require "support/shared_examples/strategy"
 
 RSpec.configure do |config|
   config.mock_framework = :mocha
-  config.include DeclarationMatchers
 
   config.after do
     Timecop.return
