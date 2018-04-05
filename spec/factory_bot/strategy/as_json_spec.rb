@@ -23,7 +23,7 @@ describe FactoryBot::Strategy::AsJSON do
     it "does not run the to_create block" do
       expect do
         subject.result(evaluation)
-      end.to_not raise_error
+      end.not_to raise_error
     end
   end
 
@@ -45,7 +45,7 @@ describe FactoryBot::Strategy::AsJSON do
     it "does not run the to_create block" do
       expect do
         subject.result(evaluation)
-      end.to_not raise_error
+      end.not_to raise_error
     end
   end
 end
