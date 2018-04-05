@@ -9,10 +9,10 @@ require 'mocha/api'
 require 'bourne'
 require 'timecop'
 
-require 'factory_girl'
+require 'factory_bot'
 require 'factory_json'
 
-source_path = Gem::Specification.find_by_name('factory_girl').gem_dir
+source_path = Gem::Specification.find_by_name('factory_bot').gem_dir
 
 files = File.join(source_path, 'spec', 'support', 'macros', '**', '*.rb')
 Dir[files].each { |f| require File.expand_path(f) }
@@ -28,6 +28,6 @@ RSpec.configure do |config|
 
   config.after do
     Timecop.return
-    FactoryGirl.reload
+    FactoryBot.reload
   end
 end

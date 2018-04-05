@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = FactoryJson::VERSION
   spec.authors       = ["E-Max"]
   spec.email         = ["max.zab87@gmail.com"]
-  spec.summary       = %q{FactoryGirl's extension for JSON support.}
-  spec.description   = %q{FactoryGirl can now handle JSON representation for an object.}
+  spec.summary       = %q{FactoryBot's extension for JSON support.}
+  spec.description   = %q{FactoryBot can now handle JSON representation for an object.}
   spec.homepage      = "https://github.com/local-ch/factory_json"
   spec.license       = "MIT"
 
@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '~> 2.0'
 
-  spec.add_dependency "factory_girl"
+  spec.add_dependency "factory_bot"
 
   spec.add_development_dependency "rake"
   spec.add_development_dependency "bundler", "~> 1.6"
@@ -34,6 +34,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "activerecord", ">= 3.0.0"
 
   # Compatibility test
-  spec.add_development_dependency "factory_girl_rails"
+  spec.add_development_dependency "factory_bot_rails"
   spec.add_development_dependency "ciderizer"
 end

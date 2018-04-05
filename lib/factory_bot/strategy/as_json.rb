@@ -1,8 +1,8 @@
-module FactoryGirl
+module FactoryBot
   module Strategy
-    class JSON
+    class AsJSON
       def initialize
-        @strategy = FactoryGirl.strategy_by_name(:build).new
+        @strategy = FactoryBot.strategy_by_name(:build).new
       end
 
       def association(runner)
@@ -14,7 +14,7 @@ module FactoryGirl
         result = @strategy.result(evaluation)
         evaluation.notify(:before_json, result)
 
-        result.to_json
+        ::JSON.parse result.to_json
       end
     end
   end

@@ -1,4 +1,4 @@
-module FactoryGirl
+module FactoryBot
   module AttributeAssignerWithHashSupport
     def object
       @evaluator.instance = build_class_instance
