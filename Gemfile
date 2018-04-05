@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://rubygems.services.local.ch'
 
 # Specify your gem's dependencies in factory_json.gemspec
 gemspec

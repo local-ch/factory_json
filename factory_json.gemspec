@@ -36,4 +36,5 @@ Gem::Specification.new do |spec|
   # Compatibility test
   spec.add_development_dependency "factory_bot_rails"
   spec.add_development_dependency "ciderizer"
+  spec.add_development_dependency 'geminabox'
 end
