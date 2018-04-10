@@ -1,7 +1,7 @@
 # FactoryJson
 
 Hi! The main purpose of this gem is to provide a simple way to create JSON data structures using the power of
-FactoryGirl's DSL.
+FactoryBot's DSL.
 
 ## Installation
 
@@ -19,7 +19,7 @@ Or install it yourself as:
 
 ## Usage
 
-This extension provides two new ways of working with FactoryGirl
+This extension provides two new ways of working with FactoryBot
 
 #### Dealing with Hashes
 
@@ -27,13 +27,13 @@ Tired of creating json fixtures somewhere in your app and keeping them up to dat
 
 ```ruby
 # spec/factories/data_structures.rb
-FactoryGirl.define do
+FactoryBot.define do
   factory :entry, class: Hash do
     name "This one is special"
     location "The place where you can always see a Sunrise"
 
     after(:build) do |entry|
-      entry[:relations] = FactoryGirl.build_list(entry_relation, 3, :with_address)
+      entry[:relations] = FactoryBot.build_list(entry_relation, 3, :with_address)
     end
   end
 
@@ -53,8 +53,8 @@ end
 And this might be a way to use these in our specs
 
 ```ruby
-entry_relation = FactoryGirl.as_json(:entry_relation, :with_address) # to return data as a Ruby hash, that beeing piped through JSON parse
-entry_relation = FactoryGirl.json(:entry_relation, :with_address) # to return string, that contains valid JSON
+entry_relation = FactoryBot.as_json(:entry_relation, :with_address) # to return data as a Ruby hash, that beeing piped through JSON parse
+entry_relation = FactoryBot.json(:entry_relation, :with_address) # to return string, that contains valid JSON
 ```
 
 #### Dealing with Models
@@ -100,7 +100,7 @@ class Profile
 end
 
 # spec/factories.rb
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
     name "User 1"
     email "test@example.com"
@@ -120,10 +120,10 @@ end
 
 
 ```ruby
-user = FactoryGirl.build(:user, :with_profile) # to return new User object
-user = FactoryGirl.create(:user, :with_profile) # to return persistent User object
-user_hash = FactoryGirl.as_json(:user, :with_profile) # to return data as a Ruby hash, that beeing piped through JSON parse
-user_json = FactoryGirl.json(:user, :with_profile) # to return string, that contains valid JSON
+user = FactoryBot.build(:user, :with_profile) # to return new User object
+user = FactoryBot.create(:user, :with_profile) # to return persistent User object
+user_hash = FactoryBot.as_json(:user, :with_profile) # to return data as a Ruby hash, that beeing piped through JSON parse
+user_json = FactoryBot.json(:user, :with_profile) # to return string, that contains valid JSON
 ```
 
 ## Testing
@@ -134,7 +134,7 @@ Testing is pretty much standard
 rspec spec
 ```
 
-Testing compatibility with FactoryGirl
+Testing compatibility with FactoryBot
 
 ```bash
 rspec `bundle show factory_girl`/spec

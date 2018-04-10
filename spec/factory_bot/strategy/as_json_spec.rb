@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe FactoryGirl::Strategy::AsJSON do
+describe FactoryBot::Strategy::AsJSON do
   it_should_behave_like "strategy with association support", :build
   it_should_behave_like "json strategy with callbacks", {}, :after_build, :before_json
   it_should_behave_like "strategy with strategy: :build", :build
@@ -23,7 +23,7 @@ describe FactoryGirl::Strategy::AsJSON do
     it "does not run the to_create block" do
       expect do
         subject.result(evaluation)
-      end.to_not raise_error
+      end.not_to raise_error
     end
   end
 
@@ -45,7 +45,7 @@ describe FactoryGirl::Strategy::AsJSON do
     it "does not run the to_create block" do
       expect do
         subject.result(evaluation)
-      end.to_not raise_error
+      end.not_to raise_error
     end
   end
 end
