@@ -5,3 +5,12 @@ inherit_from:
 
 Lint/IneffectiveAccessModifier:
   Enabled: false
+
+Gemspec/OrderedDependencies:
+  Enabled: false
+
+RSpec/ItBehavesLike:
+  Enabled: false
+
+RSpec/MessageSpies:
+  Enabled: false
