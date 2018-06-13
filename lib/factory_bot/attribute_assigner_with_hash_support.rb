@@ -9,7 +9,7 @@ module FactoryBot
           elsif instance.is_a?(Hash)
             instance[attribute] = get(attribute)
           else
-            fail NoMethodError, "undefined method `#{attribute}=' for #{instance}"
+            raise NoMethodError, "undefined method `#{attribute}=' for #{instance}"
           end
           @attribute_names_assigned << attribute
         end

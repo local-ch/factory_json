@@ -1,4 +1,3 @@
-# coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'factory_json/version'
@@ -18,23 +17,24 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = '~> 2.0'
+  spec.required_ruby_version = '~> 2.3'
 
   spec.add_dependency "factory_bot"
 
-  spec.add_development_dependency "rake"
   spec.add_development_dependency "bundler", "~> 1.6"
-  spec.add_development_dependency "rspec", "~> 3.3.0"
+  spec.add_development_dependency "rake"
   spec.add_development_dependency "cucumber", "~> 1.3.15"
+  spec.add_development_dependency "rspec", "~> 3.3.0"
   spec.add_development_dependency "aruba"
-  spec.add_development_dependency "mocha", ">= 0.12.8"
   spec.add_development_dependency "bourne"
+  spec.add_development_dependency "mocha", ">= 0.12.8"
   spec.add_development_dependency "appraisal", "~> 1.0.0"
-  spec.add_development_dependency "timecop"
   spec.add_development_dependency "activerecord", ">= 3.0.0"
+  spec.add_development_dependency "timecop"
 
   # Compatibility test
   spec.add_development_dependency "factory_bot_rails"
-  spec.add_development_dependency "ciderizer"
   spec.add_development_dependency 'geminabox'
+  spec.add_development_dependency 'rubocop', '~> 0.57.1'
+  spec.add_development_dependency 'rubocop-rspec', '~> 1.26.0'
 end
