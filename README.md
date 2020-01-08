@@ -1,5 +1,5 @@
 # DEPRECATED
-This gem is deprecated please do NOT use it for new projects.
+This gem is deprecated. Please do NOT use it for new projects.
 
 # FactoryJson
 
