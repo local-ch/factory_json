@@ -1,3 +1,6 @@
+# DEPRECATED
+This gem is deprecated. Please do NOT use it for new projects.
+
 # FactoryJson
 
 Hi! The main purpose of this gem is to provide a simple way to create JSON data structures using the power of
